@@ -4,6 +4,6 @@ const app = express();
 require("../db/connection");
 app.use(express.json());
 
-app.use("/api/category", categoryRoutes);
+app.use("/api/categories", categoryRoutes);
 
 module.exports = app;

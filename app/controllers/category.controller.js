@@ -10,7 +10,7 @@ class Category {
         message: "Added",
       });
     } catch (e) {
-      res.status(500).send({
+      res.status(400).send({
         apiStatus: false,
         data: e,
         message: e.message,
@@ -26,7 +26,7 @@ class Category {
         message: "All Categories",
       });
     } catch (e) {
-      res.status(500).send({
+      res.status(400).send({
         apiStatus: false,
         data: e,
         message: e.message,
@@ -42,7 +42,7 @@ class Category {
         message: "Single Category",
       });
     } catch (e) {
-      res.status(500).send({
+      res.status(400).send({
         apiStatus: false,
         data: e,
         message: e.message,
@@ -54,14 +54,16 @@ class Category {
       const category = await categoryModel.findByIdAndUpdate(
         req.params.id,
         req.body,
-        { runValidators: true }
+
+        { runValidators: true, new: true }
       );
       res.status(200).send({
         apiStatus: true,
+        data: category,
         messgae: "Edit Category",
       });
     } catch (e) {
-      res.status(500).send({
+      res.status(400).send({
         apiStatus: false,
         data: e,
         messgae: e.message,
@@ -73,10 +75,11 @@ class Category {
       const category = await categoryModel.findByIdAndDelete(req.params.id);
       res.status(200).send({
         apiStatus: true,
+        data: category,
         message: "Delete Category",
       });
     } catch (e) {
-      res.status(500).send({
+      res.status(400).send({
         apiStatus: false,
         message: e.message,
       });
