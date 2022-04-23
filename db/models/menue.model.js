@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const categorySchema = mongoose.Schema(
+const menueSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -16,9 +16,9 @@ const categorySchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-categorySchema.methods.toJSON = function () {
+menueSchema.methods.toJSON = function () {
   return this.toObject();
 };
 
-const Category = mongoose.model("Category", categorySchema);
-module.exports = Category;
+const Menue = mongoose.model("Menue", menueSchema);
+module.exports = Menue;
