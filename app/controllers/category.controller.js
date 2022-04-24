@@ -85,6 +85,16 @@ class Category {
       });
     }
   };
+  static uploadImage = async (req, res) => {
+    req.body.categoryImage = `${req.file.path}`;
+    const category = await new categoryModel(req.body);
+    // console.log("req.body :: ", category);
+    // console.log("req.file :: ", req.file);
+    await category.save();
+    res.status(200).send({
+      category: category,
+    });
+  };
 }
 
 module.exports = Category;
