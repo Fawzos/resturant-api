@@ -16,6 +16,12 @@ const categorySchema = mongoose.Schema(
     categoryImage: {
       type: String,
     },
+    items: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Item",
+      },
+    ],
   },
   { timestamps: true }
 );

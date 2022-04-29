@@ -5,6 +5,7 @@ const uploadFile = require("../app/middlewares/uploadFiles");
 
 router.post("/", Category.addCategory);
 router.get("/:id", Category.singleCategory);
+router.post("/items/:id", Category.itemsPerCategory);
 router.get("/", Category.allCategories);
 router.put("/:id", Category.editCategory);
 router.delete("/:id", Category.deleteCategory);

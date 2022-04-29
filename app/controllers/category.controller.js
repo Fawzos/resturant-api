@@ -95,6 +95,25 @@ class Category {
       category: category,
     });
   };
+  static itemsPerCategory = async (req, res) => {
+    try {
+      const category = await categoryModel
+        .findById(req.params.id)
+        .populate("items");
+      console.log(category);
+      res.status(200).send({
+        apiStatus: true,
+        data: category.items,
+        message: "Items per catgory",
+      });
+    } catch (e) {
+      res.status(400).send({
+        apiStatus: false,
+        data: e,
+        message: e.message,
+      });
+    }
+  };
 }
 
 module.exports = Category;
