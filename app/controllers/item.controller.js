@@ -99,13 +99,14 @@ class Item {
     res.send(category);
   };
   static categorybyItems = async (req, res) => {
-    const category = await categoryModel.findById(req.params.id);
-    const categoryByItems = await itemModel
-      .findById(req.params.id)
-      .populate("categories");
-    console.log(categoryByItems);
-
-    res.send(categoryByItems);
+    // const category = await categoryModel.findById(req.params.id);
+    // const categoryByItems = await itemModel
+    //   .findById(req.params.id)
+    //   .populate("categories");
+    // console.log(categoryByItems);
+    // res.send(categoryByItems);
+    const items = await itemModel.find({ categories: req.params.id });
+    res.send({ items });
   };
 }
 
